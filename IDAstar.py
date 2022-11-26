@@ -1,7 +1,8 @@
 #sigal graboys 319009304
 from numpy import inf
-
 import Node
+from Node import huristic_function
+from load_roads import junction_list
 
 
 # implement the limited dfs for nodes
@@ -20,10 +21,10 @@ def limited_dfs(node, target, f_limit):
     return None, f_limit
 
 
-def ida_star_function(source, target, use, huristic_function):
+def ida_star_function(source, target):
     node = Node.Node(source,target)
-    source_junction = Node.junction_list[source]
-    target_junction = Node.junction_list[target]
+    source_junction = junction_list[source]
+    target_junction = junction_list[target]
     new_limit = huristic_function(source_junction.lat, source_junction.lon, target_junction.lat, target_junction.lon)
     while True:
         f_limit = new_limit

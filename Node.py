@@ -1,10 +1,7 @@
-#sigal graboys 319009304
-from ways import load_map_from_csv
+# sigal graboys 319009304
+import load_roads
 from ways.info import SPEED_RANGES
 from ways.tools import compute_distance
-
-roads = (load_map_from_csv())
-junction_list = roads.junctions()
 
 
 def huristic_function(lat1=0, lon1=0, lat2=0, lon2=0):
@@ -20,17 +17,17 @@ class Node:
         self.path_cost_g_function = path_cost
         self.path_g_h_function = heuristic_cost
         self.target = target
-        self.target_lat, self.target_lon = junction_list[target].lat, junction_list[target].lon
+        self.target_lat, self.target_lon = load_roads.junction_list[target].lat, load_roads.junction_list[target].lon
 
     def expand(self) -> []:
         children_list = []
-        junction = junction_list[self.index]
+        junction = load_roads.junction_list[self.index]
         for link in junction.links:
             index = link.target
             parent = self
             path = self.update_path(self.finding_path())
             path_cost = self.path_cost_g_function + self.cost_function(self.index, link[1])
-            junction_son = junction_list[index]
+            junction_son = load_roads.junction_list[index]
             total_huristic_cost = path_cost + huristic_function(junction_son.lat,
                                                                 junction_son.lon, self.target_lat,
                                                                 self.target_lon)
@@ -58,7 +55,7 @@ class Node:
         if (self.index or source) == target:
             return 0
         # finding the distance
-        source_junction = junction_list[source]
+        source_junction = load_roads.junction_list[source]
         links_connceted_to_source = source_junction.links
         for link in links_connceted_to_source:
             if link[1] == target:

@@ -1,32 +1,37 @@
 import csv
-import random
+from random import random
 
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 
 import IDAstar
-from ways import draw
-from Node import roads
+from ways.draw import plot_path
+from load_roads import roads
+import numpy as np
 
-
+# def create_map ():
+#         import matplotlib.pyplot as plt
+#         with open("problems.csv", 'r') as file:
+#                 csvreader = csv.reader(file)
+#                 source = []
+#                 target = []
+#                 paths = []
+#                 for row in csvreader:
+#                         source.append(int(row[0]))
+#                         target.append(int(row[1]))
+#                         path =  IDAstar.IDAstar(int(row[0]), int(row[1]))
+#                         plot_path(roads, path)
+#                         plt.show()
 
 # loading the problems to two different lists
-def create_map():
-    with open("problems.csv", 'r') as file:
-        csvreader = csv.reader(file)
-        source = []
-        target = []
-        paths = []
 
-        for row in csvreader:
-            source.append(int(row[0]))
-            target.append(int(row[1]))
+#
+# choice = random.randint(0, len(source) - 1)
+source = 145001
+target = 145018
+path = IDAstar.ida_star_function(source, target)
+path_index = []
+for junction in path:
+    path_index.append(junction.index)
 
-        # for i in range(10):
-        choice = random.randint(0, len(source) - 1)
-
-    path = IDAstar.ida_star_function(source[choice], target[choice])
-    draw.plot_path(roads, path)
-    plot_path(roads, path)
-
-
-
+plot_path(roads, path_index)
+plt.show()

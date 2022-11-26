@@ -41,8 +41,8 @@ def find_astar_route(source, target, use=0):
         return path
 
 
-def find_idastar_route(source, target, use=0, h=lambda x, y, z, w: huristic_function(x, y, z, w)):
-    path = IDAstar.ida_star_function(source, target, use, h)
+def find_idastar_route(source, target):
+    path = IDAstar.ida_star_function(source, target)
     for node in path:
         print(node.index)
         print(" ")
