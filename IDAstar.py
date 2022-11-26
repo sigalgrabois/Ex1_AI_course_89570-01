@@ -1,3 +1,4 @@
+#sigal graboys 319009304
 from numpy import inf
 
 import Node

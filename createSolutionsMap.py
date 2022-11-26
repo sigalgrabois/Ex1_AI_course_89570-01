@@ -1,8 +1,12 @@
 import csv
 import random
 
+import matplotlib.pyplot as plt
+
 import IDAstar
 from ways import draw
+from Node import roads
+
 
 
 # loading the problems to two different lists
@@ -21,4 +25,8 @@ def create_map():
         choice = random.randint(0, len(source) - 1)
 
     path = IDAstar.ida_star_function(source[choice], target[choice])
-    draw.plot_path(path)
+    draw.plot_path(roads, path)
+    plot_path(roads, path)
+
+
+
