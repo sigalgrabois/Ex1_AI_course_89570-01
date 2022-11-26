@@ -22,10 +22,10 @@ class Node:
             parent = self
             path = self.update_path(self.finding_path())
             path_cost = self.path_cost_g_function + self.cost_function(self.index, link[1])
-            junction_first = junction_list[self.index]
-            junction_second = junction_list[link[1]]
-            total_huristic_cost = self.path_cost_g_function + main.huristic_function(junction_first.lat, junction_first.lon,
-                                                                                     junction_second.lat, junction_second.lon)
+            junction_son = junction_list[index]
+            total_huristic_cost = self.path_cost_g_function + main.huristic_function(lat1=junction_son.lat,
+                                                                                     lon1=junction_son.lon,
+                                                                                     )
             new_node = Node(index, parent, path, path_cost, total_huristic_cost)
             children_list.append(new_node)
         return children_list

@@ -1,6 +1,5 @@
 import Node
 from PriorityQueue import PriorityQueue
-import main
 
 
 
@@ -55,7 +54,7 @@ def a_star_best_first_graph_search(source, target, use, h):
             if use == 1:
                 return new_node.path_g_h_function
             if use == 2:
-                return main.huristic_function(Node.junction_list[source].lat, Node.junction_list[source].lon,
+                return h(Node.junction_list[source].lat, Node.junction_list[source].lon,
                                               Node.junction_list[target].lat, Node.junction_list[target].lon)
         closed_list.add(node)
         for child in node.expand():
