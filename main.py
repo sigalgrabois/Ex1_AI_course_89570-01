@@ -68,4 +68,4 @@ if __name__ == '__main__':
     print("found path: ")
     source = 145001
     target = 145018
-    ucs_path = find_idastar_route(source, target)
+    ucs_path = find_astar_route(source, target)
