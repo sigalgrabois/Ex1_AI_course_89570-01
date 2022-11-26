@@ -22,8 +22,8 @@ def find_ucs_rout(source, target, use=0):
     return path
 
 
-def find_astar_route(source, target, use=0, h=lambda x, y, z, w: huristic_function(x, y, z, w)):
-    path = Astar.a_star_function(source, target, use, h)
+def find_astar_route(source, target, use=0):
+    path = Astar.a_star_function(source, target, use)
     # path cost
     if use == 1:
         print(path)
@@ -68,4 +68,4 @@ if __name__ == '__main__':
     print("found path: ")
     source = 145001
     target = 145018
-    ucs_path = find_astar_route(source, target)
+    ucs_path = find_idastar_route(source, target)

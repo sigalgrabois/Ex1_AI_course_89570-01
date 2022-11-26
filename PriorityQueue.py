@@ -7,7 +7,7 @@ class PriorityQueue:
         self.frontier.sort(key=lambda node: node.path_cost_g_function)
 
     def sort_heuristic(self):
-        self.frontier.sort(key=lambda node: node.path_cost_g_function + node.path_g_h_function)
+        self.frontier.sort(key=lambda node: node.path_g_h_function)
 
     def insert(self, node):
         self.frontier.append(node)
@@ -38,6 +38,6 @@ class PriorityQueue:
     def huristic_swap_nodes(self, node):
         for frontierNode in self.frontier:
             if node.index == frontierNode.index:
-                if node.path_g_h_function + node.path_cost_g_function < frontierNode.path_g_h_function + node.path_cost_g_function:
+                if node.path_g_h_function < frontierNode.path_g_h_function:
                     self.frontier.remove(frontierNode)
                     self.frontier.append(node)

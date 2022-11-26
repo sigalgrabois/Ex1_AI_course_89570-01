@@ -20,7 +20,7 @@ def limited_dfs(node, target, f_limit):
 
 
 def ida_star_function(source, target, use, huristic_function):
-    node = Node.Node(source)
+    node = Node.Node(source,target)
     source_junction = Node.junction_list[source]
     target_junction = Node.junction_list[target]
     new_limit = huristic_function(source_junction.lat, source_junction.lon, target_junction.lat, target_junction.lon)
