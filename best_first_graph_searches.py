@@ -1,7 +1,7 @@
 import Node
 from PriorityQueue import PriorityQueue
 import main
-from huristic_function import huristic_function
+
 
 
 def best_first_graph_search(source, target, use):

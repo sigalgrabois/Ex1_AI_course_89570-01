@@ -6,14 +6,13 @@ We just parse input and call methods from other modules.
 import Astar
 import ucs
 import IDAstar
-from huristic_function import huristic_function
 
 
 # do NOT import ways. This should be done from other files
 # simply import your modules and call the appropriate functions
-# def huristic_function(lat1=0, lon1=0, lat2=0, lon2=0):
-#     distance = Astar.calculate_distance(lat1, lon1, lat2, lon2)
-#     return distance / 110
+def huristic_function(lat1=0, lon1=0, lat2=0, lon2=0):
+    distance = Astar.calculate_distance(lat1, lon1, lat2, lon2)
+    return distance / 110
 
 def find_ucs_rout(source, target, use=0):
     path = ucs.ucs_function(source, target, use)
@@ -69,5 +68,4 @@ if __name__ == '__main__':
     print("found path: ")
     source = 145001
     target = 145018
-    ucs_path = find_idastar_route(
-        source, target)
+    ucs_path = find_idastar_route(source, target)
