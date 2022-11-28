@@ -4,9 +4,10 @@ import Node
 from Node import huristic_function
 from load_roads import junction_list
 
-
+new_limit = 0
 # implement the limited dfs for nodes
 def limited_dfs(node, target, f_limit):
+    global new_limit
     new_f = node.path_g_h_function
     if new_f > f_limit:
         new_limit = min(f_limit, new_f)
@@ -22,6 +23,7 @@ def limited_dfs(node, target, f_limit):
 
 
 def ida_star_function(source, target):
+    global new_limit
     node = Node.Node(source,target)
     source_junction = junction_list[source]
     target_junction = junction_list[target]

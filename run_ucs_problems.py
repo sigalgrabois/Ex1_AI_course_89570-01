@@ -1,6 +1,5 @@
 #sigal graboys 319009304
 import csv
-
 from main import find_ucs_rout
 
 # loading the problems to two different lists

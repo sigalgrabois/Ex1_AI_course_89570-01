@@ -1,8 +1,7 @@
-#sigal graboys 319009304
+# sigal graboys 319009304
 import csv
 
 from main import find_astar_route
-
 
 # loading the problems to two different lists
 
@@ -35,7 +34,3 @@ with open("results/AStarRuns.txt", 'w') as file:
         file.write("%s" % huristic_path)
 
         file.write("\n")
-
-
-
-
