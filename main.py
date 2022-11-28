@@ -1,4 +1,4 @@
-#sigal graboys 319009304
+# sigal graboys 319009304
 '''
 Parse input and run appropriate code.
 Don't use this file for the actual work; only minimal code should be here.
@@ -15,12 +15,10 @@ def huristic_function(lat1=0, lon1=0, lat2=0, lon2=0):
     distance = Astar.calculate_distance(lat1, lon1, lat2, lon2)
     return distance / 110
 
+
 def find_ucs_rout(source, target, use=0):
     path = ucs.ucs_function(source, target, use)
-    if use ==0:
-        for node in path:
-            print(node.index)
-            print(" ")
+    if use == 0:
         return path
     if use == 1:
         return path
@@ -28,28 +26,10 @@ def find_ucs_rout(source, target, use=0):
 
 def find_astar_route(source, target, use=0):
     path = Astar.a_star_function(source, target, use)
-    # path cost
-    if use == 1:
-        print(path)
-        return path
-    if use == 2:
-        print(path)
-        return path
-    # huristic path
-    elif use == 0:
-        for node in path:
-            print(node.index)
-            print(" ")
-
-        return path
 
 
 def find_idastar_route(source, target):
     path = IDAstar.ida_star_function(source, target)
-    for node in path:
-        print(node.index)
-        print(" ")
-
     return path
 
 
