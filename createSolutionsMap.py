@@ -60,8 +60,6 @@ target = 39604
 
 
 
-
-
 path = IDAstar.ida_star_function(source, target)
 path_index = []
 for junction in path:
