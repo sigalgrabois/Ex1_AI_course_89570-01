@@ -1,15 +1,13 @@
-#sigal graboys 319009304
+# sigal graboys 319009304
 '''
-This file should generate 100 random routing problems and injecting it to problems.cvs file
+This file should generate 100 random routing problems and write it to problems.cvs file
 '''
 import numpy as np
 from ways import load_map_from_csv
 import pandas as pd
 import random
-
-roads = (load_map_from_csv())
+roads = load_map_from_csv()
 junction_list = roads.junctions()
-
 
 def problems_generate(roads):
     # create a list of source and target tuples
@@ -41,10 +39,12 @@ def problems_generate(roads):
         i = 0
         flag = 0
         while i < 12:
+            # check if the link is conncected to a junction
             if len(links_list_source) == 0:
                 flag = 1
                 break
             temp_link = random.choice(links_list_source)
+            # check if the target is like the source
             if temp_link[1] == source_index:
                 flag = 1
                 break
@@ -65,6 +65,7 @@ def problems_generate(roads):
         target_list.append(source_index)
         source_list.append(buffer_source_list[-1])
         problems_num = problems_num + 1
+    # save the 100 random problems to a csv file
     problems = np.column_stack((source_list, target_list))
     pd_problems = pd.DataFrame(problems)
     pd_problems.to_csv('problems.csv', index=False, header=None)

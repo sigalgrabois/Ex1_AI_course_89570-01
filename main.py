@@ -18,14 +18,12 @@ def huristic_function(lat1=0, lon1=0, lat2=0, lon2=0):
 
 def find_ucs_rout(source, target, use=0):
     path = ucs.ucs_function(source, target, use)
-    if use == 0:
-        return path
-    if use == 1:
-        return path
+    return path
 
 
 def find_astar_route(source, target, use=0):
     path = Astar.a_star_function(source, target, use)
+    return path
 
 
 def find_idastar_route(source, target):
@@ -47,9 +45,5 @@ def dispatch(argv):
 
 
 if __name__ == '__main__':
-    # from sys import argv
-    # dispatch(argv)
-    print("found path: ")
-    source = 145001
-    target = 145018
-    ucs_path = find_idastar_route(source, target)
+    from sys import argv
+    dispatch(argv)

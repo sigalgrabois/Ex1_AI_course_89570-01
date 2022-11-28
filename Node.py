@@ -2,8 +2,9 @@
 import load_roads
 from ways.info import SPEED_RANGES
 from ways.tools import compute_distance
+'''this class represent a node in the roads map'''
 
-
+# huristic function for Astar and IDAstar
 def huristic_function(lat1=0, lon1=0, lat2=0, lon2=0):
     distance = compute_distance(lat1, lon1, lat2, lon2)
     return distance / 110
@@ -18,7 +19,7 @@ class Node:
         self.path_g_h_function = heuristic_cost
         self.target = target
         self.target_lat, self.target_lon = load_roads.junction_list[target].lat, load_roads.junction_list[target].lon
-
+# expand the node and return the children list
     def expand(self) -> []:
         children_list = []
         junction = load_roads.junction_list[self.index]
@@ -34,7 +35,7 @@ class Node:
             new_node = Node(index, self.target, parent, path, path_cost, total_huristic_cost)
             children_list.append(new_node)
         return children_list
-
+# used to set each node's path
     def finding_path(self):
         node, path_back = self, []
         while node:
@@ -47,9 +48,7 @@ class Node:
         path_list.append(self)
         return path_list
 
-    def update_heuristic_cost(self, heuristic_cost):
-        self.path_g_h_function = self.path_g_h_function + heuristic_cost
-
+# used to calculate the cost of each node (g function)
     def cost_function(self, source, target):
 
         if (self.index or source) == target:

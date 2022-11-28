@@ -1,4 +1,5 @@
 #sigal graboys 319009304
+''' this class is a priority queue that is used in the different searches '''
 class PriorityQueue:
 
     def __init__(self):
