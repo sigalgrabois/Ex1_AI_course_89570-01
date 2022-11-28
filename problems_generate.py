@@ -17,7 +17,6 @@ def problems_generate(roads):
     target_list = []
     token_junctions = []
     problems_num = 0
-    s_t_list = []
 
     # loop generating the sources
     while problems_num < 101:
@@ -41,7 +40,7 @@ def problems_generate(roads):
 
         i = 0
         flag = 0
-        while i < 6:
+        while i < 12:
             if len(links_list_source) == 0:
                 flag = 1
                 break
@@ -51,6 +50,7 @@ def problems_generate(roads):
                 break
             junction_check = junction_list[temp_link.target]
             if len(junction_check.links) == 0:
+                flag = 1
                 break
             source_index = temp_link[1]
             links_list_source = junction_list[source_index].links
@@ -68,9 +68,6 @@ def problems_generate(roads):
     problems = np.column_stack((source_list, target_list))
     pd_problems = pd.DataFrame(problems)
     pd_problems.to_csv('problems.csv', index=False, header=None)
-    s_t_list = zip(source_list, target_list)
-    for st in s_t_list:
-        print(st)
 
 
 if __name__ == '__main__':

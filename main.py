@@ -70,6 +70,6 @@ if __name__ == '__main__':
     # from sys import argv
     # dispatch(argv)
     print("found path: ")
-    source = 612375
-    target = 612386
+    source = 145001
+    target = 145018
     ucs_path = find_idastar_route(source, target)
