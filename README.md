@@ -1,4 +1,4 @@
-#sigal graboys 319009304
+#sigal graboys 
 #Homework 1 - Heuristic Search
 
 ##Directory Structure
